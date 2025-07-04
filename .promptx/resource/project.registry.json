@@ -1,0 +1,35 @@
+{
+  "version": "2.0.0",
+  "source": "project",
+  "metadata": {
+    "version": "2.0.0",
+    "description": "project 级资源注册表",
+    "createdAt": "2025-07-04T06:07:56.126Z",
+    "updatedAt": "2025-07-04T06:07:56.129Z",
+    "resourceCount": 1
+  },
+  "resources": [
+    {
+      "id": "backend-expert-python",
+      "source": "project",
+      "protocol": "role",
+      "name": "Backend Expert Python 角色",
+      "description": "专业角色，提供特定领域的专业能力",
+      "reference": "@project://.promptx/resource/domain/backend-expert-python/backend-expert-python.role.md",
+      "metadata": {
+        "createdAt": "2025-07-04T06:07:56.128Z",
+        "updatedAt": "2025-07-04T06:07:56.128Z",
+        "scannedAt": "2025-07-04T06:07:56.128Z"
+      }
+    }
+  ],
+  "stats": {
+    "totalResources": 1,
+    "byProtocol": {
+      "role": 1
+    },
+    "bySource": {
+      "project": 1
+    }
+  }
+}
