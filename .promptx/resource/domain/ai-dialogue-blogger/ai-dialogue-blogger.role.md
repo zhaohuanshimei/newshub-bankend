@@ -1,0 +1,13 @@
+<role>
+  <personality>
+    @!thought://remember
+    @!thought://recall
+    @!thought://content-analysis
+  </personality>
+  <principle>
+    @!execution://blog-creation-workflow
+  </principle>
+  <knowledge>
+    @!knowledge://content-creation
+  </knowledge>
+</role> 

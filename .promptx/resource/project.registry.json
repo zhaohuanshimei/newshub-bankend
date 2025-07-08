@@ -4,11 +4,63 @@
   "metadata": {
     "version": "2.0.0",
     "description": "project 级资源注册表",
-    "createdAt": "2025-07-04T06:07:56.126Z",
-    "updatedAt": "2025-07-04T06:07:56.129Z",
-    "resourceCount": 1
+    "createdAt": "2025-07-07T07:33:43.283Z",
+    "updatedAt": "2025-07-07T07:33:43.287Z",
+    "resourceCount": 5
   },
   "resources": [
+    {
+      "id": "ai-dialogue-blogger",
+      "source": "project",
+      "protocol": "role",
+      "name": "Ai Dialogue Blogger 角色",
+      "description": "专业角色，提供特定领域的专业能力",
+      "reference": "@project://.promptx/resource/domain/ai-dialogue-blogger/ai-dialogue-blogger.role.md",
+      "metadata": {
+        "createdAt": "2025-07-07T07:33:43.284Z",
+        "updatedAt": "2025-07-07T07:33:43.284Z",
+        "scannedAt": "2025-07-07T07:33:43.284Z"
+      }
+    },
+    {
+      "id": "content-analysis",
+      "source": "project",
+      "protocol": "thought",
+      "name": "Content Analysis 思维模式",
+      "description": "思维模式，指导AI的思考方式",
+      "reference": "@project://.promptx/resource/domain/ai-dialogue-blogger/thought/content-analysis.thought.md",
+      "metadata": {
+        "createdAt": "2025-07-07T07:33:43.285Z",
+        "updatedAt": "2025-07-07T07:33:43.285Z",
+        "scannedAt": "2025-07-07T07:33:43.285Z"
+      }
+    },
+    {
+      "id": "blog-creation-workflow",
+      "source": "project",
+      "protocol": "execution",
+      "name": "Blog Creation Workflow 执行模式",
+      "description": "执行模式，定义具体的行为模式",
+      "reference": "@project://.promptx/resource/domain/ai-dialogue-blogger/execution/blog-creation-workflow.execution.md",
+      "metadata": {
+        "createdAt": "2025-07-07T07:33:43.285Z",
+        "updatedAt": "2025-07-07T07:33:43.285Z",
+        "scannedAt": "2025-07-07T07:33:43.285Z"
+      }
+    },
+    {
+      "id": "content-creation",
+      "source": "project",
+      "protocol": "knowledge",
+      "name": "Content Creation 知识库",
+      "description": "知识库，提供专业知识和信息",
+      "reference": "@project://.promptx/resource/domain/ai-dialogue-blogger/knowledge/content-creation.knowledge.md",
+      "metadata": {
+        "createdAt": "2025-07-07T07:33:43.286Z",
+        "updatedAt": "2025-07-07T07:33:43.286Z",
+        "scannedAt": "2025-07-07T07:33:43.286Z"
+      }
+    },
     {
       "id": "backend-expert-python",
       "source": "project",
@@ -17,19 +69,22 @@
       "description": "专业角色，提供特定领域的专业能力",
       "reference": "@project://.promptx/resource/domain/backend-expert-python/backend-expert-python.role.md",
       "metadata": {
-        "createdAt": "2025-07-04T06:07:56.128Z",
-        "updatedAt": "2025-07-04T06:07:56.128Z",
-        "scannedAt": "2025-07-04T06:07:56.128Z"
+        "createdAt": "2025-07-07T07:33:43.286Z",
+        "updatedAt": "2025-07-07T07:33:43.286Z",
+        "scannedAt": "2025-07-07T07:33:43.286Z"
       }
     }
   ],
   "stats": {
-    "totalResources": 1,
+    "totalResources": 5,
     "byProtocol": {
-      "role": 1
+      "role": 2,
+      "thought": 1,
+      "execution": 1,
+      "knowledge": 1
     },
     "bySource": {
-      "project": 1
+      "project": 5
     }
   }
 }

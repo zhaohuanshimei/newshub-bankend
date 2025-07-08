@@ -86,7 +86,7 @@ alembic/versions/*.py
 
 # Docker
 .dockerignore
-Dockerfile
+# Dockerfile - 部署需要，不排除
 
 # Railway
 .railway/

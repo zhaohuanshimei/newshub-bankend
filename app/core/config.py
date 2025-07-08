@@ -3,7 +3,8 @@ NewsHub Backend Configuration
 针对移动端友好的配置设置
 """
 from pydantic_settings import BaseSettings
-from typing import Optional, List
+from pydantic import field_validator
+from typing import Optional, List, Union
 import os
 
 class Settings(BaseSettings):
@@ -13,6 +14,8 @@ class Settings(BaseSettings):
     APP_NAME: str = "NewsHub Backend API"
     VERSION: str = "1.0.0"
     DEBUG: bool = False
+    PORT: int = 8000
+    PYTHONPATH: Optional[str] = None
     
     # API配置 - 移动端优化
     API_V1_PREFIX: str = "/api/v1"
@@ -25,7 +28,7 @@ class Settings(BaseSettings):
     PAGINATION_MAX_SIZE: int = 100  # 移动端分页最大大小
     
     # CORS配置 - 支持移动端跨域
-    BACKEND_CORS_ORIGINS: List[str] = [
+    BACKEND_CORS_ORIGINS: Union[List[str], str] = [
         "http://localhost:3000",  # 本地开发
         "http://localhost:8080",  # 移动端开发
         "https://newshub.com",    # 生产域名
@@ -37,6 +40,7 @@ class Settings(BaseSettings):
     SUPABASE_URL: Optional[str] = None
     SUPABASE_ANON_KEY: Optional[str] = None
     SUPABASE_SERVICE_ROLE_KEY: Optional[str] = None
+    SUPABASE_DB_URL: Optional[str] = None
     
     # Redis配置 (Railway托管)
     REDIS_URL: Optional[str] = None
@@ -62,11 +66,27 @@ class Settings(BaseSettings):
     
     # 图片存储配置
     MAX_IMAGE_SIZE: int = 5 * 1024 * 1024  # 5MB
-    ALLOWED_IMAGE_TYPES: List[str] = ["image/jpeg", "image/png", "image/webp"]
+    ALLOWED_IMAGE_TYPES: Union[List[str], str] = ["image/jpeg", "image/png", "image/webp"]
     
     # API限流配置 - 移动端友好
     RATE_LIMIT_PER_MINUTE: int = 100  # 每分钟100次请求
     RATE_LIMIT_BURST: int = 20        # 突发请求限制
+    
+    @field_validator('BACKEND_CORS_ORIGINS')
+    @classmethod
+    def parse_cors_origins(cls, v):
+        """解析CORS来源配置 - 支持逗号分隔字符串或列表"""
+        if isinstance(v, str):
+            return [origin.strip() for origin in v.split(',') if origin.strip()]
+        return v
+    
+    @field_validator('ALLOWED_IMAGE_TYPES')
+    @classmethod
+    def parse_image_types(cls, v):
+        """解析允许的图片类型 - 支持逗号分隔字符串或列表"""
+        if isinstance(v, str):
+            return [img_type.strip() for img_type in v.split(',') if img_type.strip()]
+        return v
     
     class Config:
         env_file = ".env"
