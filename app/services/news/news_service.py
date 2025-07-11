@@ -307,6 +307,30 @@ class NewsService:
         except Exception as e:
             raise Exception(f"获取热门新闻失败: {str(e)}")
     
+    async def upsert_news_batch(self, news_list: List[dict]) -> int:
+        """
+        批量upsert新闻（按slug唯一），返回成功写入的数量
+        """
+        if not news_list:
+            return 0
+        upsert_data = []
+        for item in news_list:
+            upsert_data.append({
+                "title": item.get("title"),
+                "summary": item.get("summary"),
+                "content": item.get("content", ""),  # RSS一般无正文
+                "category": item.get("category") or "technology",  # 默认分类
+                "tags": item.get("tags", []),
+                "author": item.get("author"),
+                "source_url": item.get("link"),
+                "slug": item.get("guid") or item.get("link"),
+                "status": "published",
+                "published_at": item.get("published"),
+            })
+        # 按slug唯一键upsert
+        result = self.db.table("news").upsert(upsert_data, on_conflict="slug").execute()
+        return len(result.data) if hasattr(result, "data") and result.data else 0
+
     def _record_user_interaction(self, user_id: str, news_id: str, interaction_type: str):
         """记录用户互动行为"""
         try:
